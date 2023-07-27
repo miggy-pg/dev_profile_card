@@ -1,5 +1,38 @@
 import "./index.css";
 
+const skills = [
+  {
+    skill: "HTML + CSS",
+    level: "advanced",
+    color: "#2662EA",
+  },
+  {
+    skill: "JavaScript",
+    level: "advanced",
+    color: "#EFD81D",
+  },
+  {
+    skill: "ReactJS",
+    level: "beginner",
+    color: "#3C3DCAF",
+  },
+  {
+    skill: "Python",
+    level: "advanced",
+    color: "#E84F33",
+  },
+  {
+    skill: "Django",
+    level: "advanced",
+    color: "#60DAFB",
+  },
+  {
+    skill: "Odoo",
+    level: "advanced",
+    color: "#FF3B00",
+  },
+];
+
 function App() {
   return (
     <div className="dev-card">
@@ -35,18 +68,23 @@ function Profile() {
 function Skills() {
   return (
     <div className="dev-skill">
-      <SkillSet name="HTML + CSS" />
-      <SkillSet name="JavaScript" />
-      <SkillSet name="ReactJS" />
-      <SkillSet name="Python" />
-      <SkillSet name="Django" />
-      <SkillSet name="Odoo" />
+      {skills.map((skill) => (
+        <SkillSet skill={skill} key={skill.skill} />
+      ))}
     </div>
   );
 }
 
-function SkillSet(props) {
-  return <div>{props.name}</div>;
+function SkillSet({ skill }) {
+  return (
+    <div style={{ background: `${skill.color}` }}>
+      {skill.level === "advanced" ? (
+        <p>{skill.skill} 💪</p>
+      ) : (
+        <p>{skill.skill} 👶</p>
+      )}
+    </div>
+  );
 }
 
 export default App;
